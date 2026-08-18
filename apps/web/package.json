@@ -12,6 +12,7 @@
     "@react-three/drei": "^10.0.0",
     "@react-three/fiber": "^9.0.0",
     "@table-stakes/engine": "workspace:*",
+    "@upstash/redis": "^1.38.2",
     "next": "^15.5.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
