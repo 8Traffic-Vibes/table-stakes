@@ -1,0 +1,96 @@
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: rgba(7, 15, 36, 0.55);
+  backdrop-filter: blur(3px);
+  padding: 1rem;
+  padding-bottom: calc(env(safe-area-inset-bottom) + 1rem);
+}
+
+.sheet {
+  width: 100%;
+  max-width: 24rem;
+  padding: 1.5rem 1.4rem calc(1.3rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  animation: rise 0.25s ease-out;
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(14px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.title {
+  font-size: 1.6rem;
+  color: var(--ink);
+}
+
+.sub {
+  margin: 0;
+  color: var(--slate);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.code {
+  letter-spacing: 0.18em;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.note {
+  margin: 0;
+  color: var(--warn);
+  font-size: 0.85rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.input {
+  min-height: 48px;
+  padding: 0 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--hairline-strong);
+  background: var(--canvas);
+  color: var(--ink);
+  font-size: 1rem;
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--primary);
+}
+
+.error {
+  margin: 0;
+  color: var(--error);
+  font-size: 0.85rem;
+}
+
+.ghost {
+  align-self: center;
+  font-size: 0.9rem;
+  padding: 0.55rem 1.2rem;
+}
+
+@media (min-width: 700px) {
+  .backdrop {
+    align-items: center;
+  }
+}

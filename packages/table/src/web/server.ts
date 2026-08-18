@@ -1,5 +1,8 @@
 import { createServer, type IncomingMessage, type Server, type ServerResponse } from "node:http";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
+import { homedir } from "node:os";
+import { join } from "node:path";
+import { spawn } from "node:child_process";
 import { WebSocketServer, WebSocket } from "ws";
 import type { LoggedEvent } from "@table-stakes/engine";
 import { sanitizeEmoji, sanitizeSay } from "../seats/driver.ts";
@@ -54,6 +57,48 @@ export class TableWebServer {
           res.writeHead(200, { "content-type": "text/html; charset=utf-8" });
           res.end(html);
           return;
+        }
+        // Auth endpoints for the web arena page (fetched cross-origin from localhost:3000).
+        if (req.url === "/auth/status" || req.url === "/auth/codex-login") {
+          const cors = {
+            "access-control-allow-origin": "*",
+            "access-control-allow-methods": "GET,POST,OPTIONS",
+            "access-control-allow-headers": "content-type",
+          };
+          if (req.method === "OPTIONS") {
+            res.writeHead(204, cors);
+            res.end();
+            return;
+          }
+          if (req.method === "GET" && req.url === "/auth/status") {
+            const claude = !!(
+              process.env.CLAUDE_CODE_OAUTH_TOKEN ||
+              process.env.ANTHROPIC_API_KEY ||
+              process.env.ANTHROPIC_AUTH_TOKEN
+            );
+            const codex = existsSync(join(homedir(), ".codex", "auth.json"));
+            res.writeHead(200, { "content-type": "application/json", ...cors });
+            res.end(JSON.stringify({ claude, codex }));
+            return;
+          }
+          if (req.method === "POST" && req.url === "/auth/codex-login") {
+            try {
+              const child = spawn("codex", ["login"], { detached: true, stdio: "ignore" });
+              child.on("error", () => {}); // async ENOENT must not crash the server
+              child.unref();
+              res.writeHead(200, { "content-type": "application/json", ...cors });
+              res.end(JSON.stringify({ ok: true }));
+            } catch (error) {
+              res.writeHead(503, { "content-type": "application/json", ...cors });
+              res.end(
+                JSON.stringify({
+                  ok: false,
+                  error: error instanceof Error ? error.message : String(error),
+                }),
+              );
+            }
+            return;
+          }
         }
         res.writeHead(404, { "content-type": "text/plain" });
         res.end("not found");

@@ -1,0 +1,93 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 720px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+.card {
+  padding: 1.2rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.cardTitle {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--charcoal);
+}
+
+.badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+}
+
+.badgeOk {
+  background: var(--tint-mint);
+  color: var(--win);
+}
+
+.badgeWait {
+  background: var(--surface);
+  color: var(--steel);
+  border: 1px solid var(--hairline);
+}
+
+.hint {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--slate);
+}
+
+.code {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  background: var(--navy);
+  color: #e6e9f2;
+  border-radius: 8px;
+  padding: 0.7rem 0.9rem;
+  overflow-x: auto;
+  white-space: pre;
+  margin: 0;
+}
+
+.loginBtn {
+  align-self: flex-start;
+  font-size: 0.9rem;
+  padding: 0.55rem 1.1rem;
+}
+
+.note {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--steel);
+}
+
+.noteError {
+  color: var(--error);
+}
+
+.unreachable {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--steel);
+  margin: 0 0 0.8rem;
+}

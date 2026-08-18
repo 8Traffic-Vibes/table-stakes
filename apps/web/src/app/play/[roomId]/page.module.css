@@ -1,0 +1,174 @@
+.screen {
+  position: fixed;
+  inset: 0;
+  height: 100dvh;
+  overflow: hidden;
+  overscroll-behavior: none;
+  background: var(--navy);
+  color: var(--on-dark);
+  touch-action: manipulation;
+}
+
+.stage {
+  position: absolute;
+  inset: 0;
+}
+
+.shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    var(--navy-deep) 15%,
+    var(--felt) 45%,
+    var(--felt-glow) 55%,
+    var(--felt) 65%,
+    var(--navy-deep) 90%
+  );
+  background-size: 250% 250%;
+  animation: shimmer 2.4s ease-in-out infinite;
+  opacity: 0.6;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 15% 50%;
+  }
+  50% {
+    background-position: 85% 50%;
+  }
+  100% {
+    background-position: 15% 50%;
+  }
+}
+
+.centerWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(env(safe-area-inset-top) + 4.5rem) 1.1rem
+    calc(env(safe-area-inset-bottom) + 1.5rem);
+  pointer-events: none;
+}
+
+.centerWrap > * {
+  pointer-events: auto;
+}
+
+.errorCard {
+  max-width: 20rem;
+  padding: 1.6rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  text-align: center;
+  align-items: center;
+}
+
+.errorTitle {
+  font-size: 1.5rem;
+  color: var(--ink);
+}
+
+.errorBody {
+  margin: 0;
+  color: var(--slate);
+  font-size: 0.92rem;
+}
+
+.errorCard :global(.pill) {
+  text-decoration: none;
+}
+
+.rebuy {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(env(safe-area-inset-bottom) + 1.2rem);
+  z-index: 33;
+  min-height: 52px;
+  box-shadow: var(--shadow-pop);
+}
+
+.reactions {
+  position: absolute;
+  left: calc(env(safe-area-inset-left) + 0.9rem);
+  bottom: calc(env(safe-area-inset-bottom) + 5.5rem);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  pointer-events: none;
+}
+
+.reaction {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.7rem 0.25rem 0.4rem;
+  border-radius: var(--radius-pill);
+  background: rgba(7, 15, 36, 0.7);
+  animation: floatFade 3.6s ease-out forwards;
+}
+
+.reactionEmoji {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.reactionFrom {
+  font-size: 0.72rem;
+  color: var(--on-dark-muted);
+}
+
+@keyframes floatFade {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  12% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+}
+
+.toast {
+  position: absolute;
+  top: calc(env(safe-area-inset-top) + 4.2rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+  max-width: calc(100vw - 2.5rem);
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--radius-pill);
+  background: var(--charcoal);
+  color: #fff;
+  font-size: 0.86rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-shadow: var(--shadow-pop);
+  animation: toastIn 0.2s ease-out;
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}

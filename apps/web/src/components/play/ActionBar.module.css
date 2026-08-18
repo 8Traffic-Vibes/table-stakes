@@ -1,0 +1,180 @@
+.wrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 35;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0.7rem calc(env(safe-area-inset-right) + 0.8rem)
+    calc(env(safe-area-inset-bottom) + 0.8rem) calc(env(safe-area-inset-left) + 0.8rem);
+  background: linear-gradient(to top, rgba(7, 15, 36, 0.94) 65%, rgba(7, 15, 36, 0));
+  animation: slideUp 0.22s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(16px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.clockTrack {
+  height: 4px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.14);
+  overflow: hidden;
+}
+
+.clockFill {
+  height: 100%;
+  border-radius: 4px;
+  background: var(--gold);
+  transition: width 0.12s linear;
+}
+
+.clockUrgent {
+  background: var(--warn);
+}
+
+.say {
+  min-height: 44px;
+  padding: 0 1rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--on-dark);
+  font-size: 0.92rem;
+  outline: none;
+}
+
+.say::placeholder {
+  color: var(--on-dark-muted);
+}
+
+.say:focus {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.row {
+  display: flex;
+  gap: 0.55rem;
+}
+
+.btn {
+  flex: 1;
+  min-height: 54px;
+  border: none;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--on-dark);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0 0.6rem;
+  transition: transform 0.1s ease, background 0.15s ease;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+}
+
+.foldBtn {
+  background: rgba(212, 58, 69, 0.28);
+  color: #ffd7da;
+}
+
+.raiseBtn {
+  background: var(--primary);
+}
+
+.raiseBtn:active {
+  background: var(--primary-pressed);
+}
+
+.sheet {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  animation: slideUp 0.18s ease-out;
+}
+
+.sheetHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.sheetLabel {
+  font-size: 0.85rem;
+  color: var(--on-dark-muted);
+}
+
+.sheetAmount {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--gold);
+}
+
+.slider {
+  width: 100%;
+  height: 44px;
+  margin: 0;
+  accent-color: var(--gold);
+  touch-action: pan-x;
+}
+
+.quickRow {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.quick {
+  flex: 1;
+  min-height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--on-dark);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.quick:active {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.sheetActions {
+  display: flex;
+  gap: 0.55rem;
+}
+
+.backBtn {
+  flex: 0 0 30%;
+}
+
+.confirmBtn {
+  background: var(--primary);
+}
+
+.confirmBtn:active {
+  background: var(--primary-pressed);
+}
+
+@media (min-width: 1024px) {
+  .wrap {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: min(34rem, calc(100vw - 26rem));
+    border-radius: 18px 18px 0 0;
+  }
+}
