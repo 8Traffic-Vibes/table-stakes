@@ -1,0 +1,11 @@
+node_modules/
+dist/
+runs/
+.env
+.env.local
+*.tgz
+.DS_Store
+.table-stakes/
+.vercel/
+.next/
+next-env.d.ts

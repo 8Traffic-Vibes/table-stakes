@@ -1,0 +1,10 @@
+{
+  "name": "@table-stakes/engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "dependencies": {
+    "@hivetech/poker-engine": "^1.0.1"
+  }
+}

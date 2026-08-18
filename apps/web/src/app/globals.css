@@ -1,0 +1,150 @@
+/* Table Stakes — "The Workspace Casino"
+   Shell: Notion-calm paper chrome (VoltAgent design-md/notion tokens).
+   Stage: deep navy band holding the three.js felt world. */
+
+:root {
+  /* — paper chrome (from the Notion design-md) — */
+  --canvas: #ffffff;
+  --surface: #f6f5f4;
+  --surface-soft: #fafaf9;
+  --hairline: #e5e3df;
+  --hairline-soft: #ede9e4;
+  --hairline-strong: #c8c4be;
+  --ink: #1a1a1a;
+  --charcoal: #37352f;
+  --slate: #5d5b54;
+  --steel: #787671;
+  --stone: #a4a097;
+
+  /* — brand — */
+  --primary: #5645d4;
+  --primary-pressed: #4534b3;
+  --on-primary: #ffffff;
+  --navy: #0a1530;
+  --navy-deep: #070f24;
+  --navy-mid: #1a2a52;
+  --on-dark: #ffffff;
+  --on-dark-muted: #a4a097;
+
+  /* — pastel card tints — */
+  --tint-peach: #ffe8d4;
+  --tint-rose: #fde0ec;
+  --tint-mint: #d9f3e1;
+  --tint-lavender: #e6e0f5;
+  --tint-sky: #dcecfa;
+  --tint-cream: #f8f5e8;
+
+  /* — casino accents (ours, tuned to sit on navy) — */
+  --felt: #1e5b47;
+  --felt-glow: #2f8266;
+  --gold: #d8b45a;
+  --card-red: #d43a45;
+  --win: #1aae39;
+  --warn: #dd5b00;
+  --error: #e03131;
+
+  /* — type — */
+  --font-display: var(--font-fraunces), "Iowan Old Style", Georgia, serif;
+  --font-ui: var(--font-schibsted), "Helvetica Neue", sans-serif;
+  --font-mono: var(--font-spline-mono), ui-monospace, "SF Mono", monospace;
+
+  --radius-card: 14px;
+  --radius-pill: 999px;
+  --shadow-card: 0 1px 2px rgba(26, 26, 26, 0.06), 0 4px 16px rgba(26, 26, 26, 0.05);
+  --shadow-pop: 0 2px 6px rgba(10, 21, 48, 0.18), 0 12px 32px rgba(10, 21, 48, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--canvas);
+  color: var(--charcoal);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 550;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: var(--font-ui);
+  cursor: pointer;
+}
+
+input,
+textarea {
+  font-family: var(--font-ui);
+}
+
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* — shared primitives — */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius-pill);
+  border: none;
+  background: var(--primary);
+  color: var(--on-primary);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.8rem 1.6rem;
+  transition: background 0.15s ease, transform 0.12s ease;
+}
+.pill:hover {
+  background: var(--primary-pressed);
+}
+.pill:active {
+  transform: scale(0.98);
+}
+.pill:disabled {
+  background: var(--stone);
+  cursor: default;
+}
+.pill--ghost {
+  background: transparent;
+  color: var(--charcoal);
+  border: 1px solid var(--hairline-strong);
+}
+.pill--ghost:hover {
+  background: var(--surface);
+}
+
+.paper-card {
+  background: var(--canvas);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "table": "agent-showdown",
+  "game": "NLHE",
+  "chips": { "referenceModel": "deepseek/deepseek-chat-v3.1", "tokensPerChip": 1000 },
+  "blinds": { "small": 1000, "big": 2000 },
+  "buyIn": { "min": 200000, "max": 1000000 },
+  "clock": { "modelSeconds": 45, "acpSeconds": 150, "humanSeconds": 60, "mcpSeconds": 60, "timeoutAction": "fold" },
+  "chat": { "enabled": true, "maxPerRound": 3, "maxChars": 200, "reactions": true, "banterPrompts": "showdown" },
+  "rules": { "thinkingBurnsStack": false },
+  "web": { "enabled": true, "port": 7787 },
+  "hands": 3,
+  "seats": [
+    { "type": "acp", "name": "Claude Code", "agent": "claude" },
+    { "type": "acp", "name": "Codex", "agent": "codex" },
+    { "type": "model", "name": "DeepSeek", "model": "deepseek/deepseek-chat-v3.1" }
+  ]
+}

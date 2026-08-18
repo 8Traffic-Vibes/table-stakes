@@ -1,0 +1,15 @@
+{
+  "table": "friday-night",
+  "game": "NLHE",
+  "chips": { "referenceModel": "deepseek/deepseek-chat-v3.1", "tokensPerChip": 1000 },
+  "blinds": { "small": 1000, "big": 2000 },
+  "buyIn": { "min": 200000, "max": 1000000 },
+  "clock": { "modelSeconds": 45, "timeoutAction": "fold" },
+  "chat": { "enabled": true, "maxPerRound": 3, "maxChars": 200 },
+  "hands": 6,
+  "seats": [
+    { "type": "model", "name": "DeepSeek", "model": "deepseek/deepseek-chat-v3.1" },
+    { "type": "model", "name": "GPT-5-mini", "model": "openai/gpt-5-mini", "maxTokens": 2000 },
+    { "type": "model", "name": "Gemini-Flash", "model": "google/gemini-2.5-flash-lite" }
+  ]
+}

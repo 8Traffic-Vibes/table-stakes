@@ -1,0 +1,13 @@
+{
+  "name": "@table-stakes/cli",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "dependencies": {
+    "@table-stakes/bank": "workspace:*",
+    "@table-stakes/engine": "workspace:*",
+    "@table-stakes/table": "workspace:*",
+    "picocolors": "^1.1.0"
+  }
+}
