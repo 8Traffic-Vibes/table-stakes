@@ -46,16 +46,6 @@ export default function CameraRig({ quality, reducedMotion }: CameraRigProps): n
       // Slight downward aim bias lifts the table toward the upper half —
       // the action bar and chat sheet own the bottom on phones.
       camera.lookAt(0, -0.5, 0);
-      if (typeof document !== "undefined") {
-        document.body.dataset.camdbg = JSON.stringify({
-          pos: camera.position.toArray().map((n) => Number(n.toFixed(2))),
-          fov: camera.fov,
-          aspect: Number(camera.aspect.toFixed(3)),
-          size: [size.width, size.height],
-          dist: Number(dist.toFixed(2)),
-          kids: scene.children.length,
-        });
-      }
       // The static fog range is tuned for the desktop camera (~7.6 away);
       // portrait fit can sit 20+ units out, which would fog the table into
       // pure navy. Keep fog relative to the camera instead.
